@@ -1,61 +1,30 @@
-import {AiOutlineHome} from 'react-icons/ai'
-import {MdOutlineContacts} from 'react-icons/md'
 import './navbar.css'
-import {NavLink} from "react-router-dom";
-import {CgProfile} from "react-icons/cg";
-import {GoProject} from "react-icons/go";
-import {FaBloggerB} from "react-icons/fa6";
 
 const Navbar = () => {
-    const homeGoHandler = () => {
-        window.scroll(0, 0)
+    const GoSection = (id) => {
+        const EL = document.getElementById(id);
+        EL.scrollIntoView({behavior:"smooth"})
     }
     return (
-        <nav className="nav">
-            <ul className="nav-container transition-colors duration-500">
+        <nav className="nav hidden lg:block" aria-label="In-page jump links">
+            <ul className="mt-12 mb-9 w-max">
                 <li>
-                    <NavLink onClick={homeGoHandler} to='/about'
-                             className="none-active-btn">
-                        <CgProfile className='text-xl'/>
-                        <span className='hidden active-text'>
-                            About
-                        </span>
-                    </NavLink>
+                    <button onClick={()=>GoSection("about")} className="group flex items-center py-3"><span
+                    className="nav-indicator mr-4 h-px w-8 bg-slate-600 transition-all group-hover:w-16 group-hover:bg-slate-200 group-focus-visible:w-16 group-focus-visible:bg-slate-200 motion-reduce:transition-none"></span><span
+                    className="nav-text text-xs font-bold uppercase tracking-widest text-slate-500 group-hover:text-slate-200 group-focus-visible:text-slate-200">About</span>
+                    </button>
                 </li>
                 <li>
-                    <NavLink onClick={homeGoHandler} to='/projects'
-                             className="none-active-btn">
-                        <GoProject className='text-xl'/>
-                        <span className='hidden active-text'>
-                            Projects
-                        </span>
-                    </NavLink>
+                    <button onClick={()=>GoSection("experience")} className="group flex items-center py-3 "><span
+                    className="nav-indicator mr-4 h-px w-8 bg-slate-600 transition-all group-hover:w-16 group-hover:bg-slate-200 group-focus-visible:w-16 group-focus-visible:bg-slate-200 motion-reduce:transition-none"></span><span
+                    className="nav-text text-xs font-bold uppercase tracking-widest text-slate-500 group-hover:text-slate-200 group-focus-visible:text-slate-200">Experience</span>
+                    </button>
                 </li>
                 <li>
-                    <NavLink onClick={homeGoHandler} to='/' className="none-active-btn">
-                        <AiOutlineHome className='text-xl'/>
-                        <span className='hidden active-text'>
-                            Home
-                        </span>
-                    </NavLink>
-                </li>
-                <li>
-                    <NavLink onClick={homeGoHandler} to='/blogs'
-                             className="none-active-btn">
-                        <FaBloggerB className='text-xl'/>
-                        <span className='hidden active-text'>
-                            Blogs
-                        </span>
-                    </NavLink>
-                </li>
-                <li>
-                    <NavLink onClick={homeGoHandler} to='/contact'
-                             className="none-active-btn">
-                        <MdOutlineContacts className='text-xl'/>
-                        <span className='hidden active-text'>
-                            Contact
-                        </span>
-                    </NavLink>
+                    <button onClick={()=>GoSection("projects")} className="group flex items-center py-3 "><span
+                    className="nav-indicator mr-4 h-px w-8 bg-slate-600 transition-all group-hover:w-16 group-hover:bg-slate-200 group-focus-visible:w-16 group-focus-visible:bg-slate-200 motion-reduce:transition-none"></span><span
+                    className="nav-text text-xs font-bold uppercase tracking-widest text-slate-500 group-hover:text-slate-200 group-focus-visible:text-slate-200">Projects</span>
+                    </button>
                 </li>
             </ul>
         </nav>

@@ -1,8 +1,9 @@
 import './home.css'
 import {AiFillHeart} from 'react-icons/ai'
-import {BiSolidRightArrow, BiLogoFacebook, BiLogoGithub, BiLogoInstagram} from 'react-icons/bi'
-import {motion} from "framer-motion";
+import {BiSolidRightArrow, BiLogoGithub, BiLogoInstagram} from 'react-icons/bi'
 import CV from '../../assets/aungpyaephyo.pdf'
+import {FaFacebookSquare} from "react-icons/fa";
+import Navbar from "../Navbar/Navbar.jsx";
 const Hero = () => {
     return (
         <section className='hero-session pt-[15px] lg:pt-0'  id="home">
@@ -37,19 +38,20 @@ const Hero = () => {
                                     <BiSolidRightArrow className='hero-pt-1-icons'/>
                                 </div>
                             </div>
+                            <Navbar/>
                             <div>
                                 <div className='flex justify-center items-center space-x-4'>
                                     <a target="blank" rel="noreferrer" href="https://www.facebook.com/aungpyaephyo1412"
-                                       className='hero-pt-1-social-link'>
-                                        <BiLogoFacebook/>
+                                       className='font-bold text-2xl hover:text-slate-200 transition-colors duration-500 text-slate-400'>
+                                        <FaFacebookSquare/>
                                     </a>
-                                    <a target="blank" rel="noreferrer" href="https://github.com/aungpyaephyo1412"
-                                       className='hero-pt-1-social-link'>
+                                    <a target="blank" rel="noreferrer" href="https://github.com/typle"
+                                       className='font-bold text-3xl hover:text-slate-200 transition-colors duration-500 text-slate-400'>
                                         <BiLogoGithub/>
                                     </a>
                                     <a target="blank" rel="noreferrer"
                                        href="https://www.instagram.com/aungpyaephyo1412/"
-                                       className='hero-pt-1-social-link'>
+                                       className='font-bold text-3xl hover:text-slate-200 transition-colors duration-500 text-slate-400'>
                                         <BiLogoInstagram/>
                                     </a>
                                 </div>

@@ -28,7 +28,7 @@ const App = () => {
                     <div className='h-auto lg:h-screen lg:sticky top-0 flex justify-center items-center px-0 lg:px-5 lg:px-14'>
                         <Home/>
                     </div>
-                    <div className='min-h-screen pt-[25px]  lg:pt-[80px]'>
+                    <div className='min-h-screen'>
                         <About/>
                         <Experience/>
                         <Project/>
