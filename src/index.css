@@ -10,3 +10,11 @@
 #root{
     cursor: url("./assets/icons8-circle-30.png"),pointer;
 }
+
+.active .nav-indicator{
+    width: 4rem;
+    background: rgb(226,232,240);
+}
+.active .nav-text{
+    color :rgb(226,232,240)
+}

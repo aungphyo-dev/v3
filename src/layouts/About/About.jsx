@@ -2,7 +2,7 @@ import './about.css'
 
 const About = () => {
     return (
-        <section className='about-session  pt-[25px]  lg:pt-[65px]' id="about">
+        <section data-section className='about-session  pt-[25px]  lg:pt-[65px]' id="about">
                         <div className='about-ct-2-div'>
                             <div className="sticky top-0 z-20 mb-4 w-full bg-slate-900/75 py-5 backdrop-blur lg:sr-only lg:relative lg:top-auto lg:mx-auto lg:w-full lg:px-0 lg:py-0 lg:opacity-0"><h2 className="text-sm font-bold uppercase tracking-widest text-slate-200 lg:sr-only">About</h2></div>
                             <p
@@ -16,7 +16,6 @@ const About = () => {
                             <p className='about-ct-2-para'>
                                 Join me on this exciting adventure as I strive to create exceptional web experiences and uncover the beauty of language and culture. Let's connect, learn, and grow together!
                             </p>
-
                         </div>
         </section>
     )
