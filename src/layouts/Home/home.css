@@ -10,6 +10,7 @@
     @apply text-[#C4D0EC]  font-normal
 }
 
+
 .hero-pt-1-title {
     @apply font-extrabold text-3xl lg:text-5xl text-[#CEE6F3] tracking-wide
 }
@@ -25,7 +26,6 @@
 .hero-pt-1-btn {
     @apply px-4 py-2 rounded-3xl bg-blue-600 text-white hover:bg-blue-900 transition-colors duration-500
 }
-
 .hero-pt-1-icons {
     @apply text-blue-600 transition-transform duration-500 peer-hover:-rotate-180
 }
