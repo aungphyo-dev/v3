@@ -1,20 +1,19 @@
+import useFiresotre from "../../Hooks/useFiresotre.js";
+
 const DProjects = () => {
+    const {getAllCollection} = useFiresotre()
+    const data = getAllCollection('projects')
+    const {deleteDocument} = useFiresotre()
     return(
-        <div className="relative h-screen overflow-auto shadow-md sm:rounded-lg py-5">
-            <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+        <div className="relative h-screen shadow-md sm:rounded-lg pb-5">
+            <table className="w-full overflow-auto text-sm text-left text-gray-400">
+                <thead className="text-xs  uppercase  bg-gray-700 text-gray-400">
                 <tr>
                     <th scope="col" className="px-6 py-3">
-                        Product name
+                        Project name
                     </th>
                     <th scope="col" className="px-6 py-3">
-                        Color
-                    </th>
-                    <th scope="col" className="px-6 py-3">
-                        Category
-                    </th>
-                    <th scope="col" className="px-6 py-3">
-                        Price
+                        Skills
                     </th>
                     <th scope="col" className="px-6 py-3">
                         Action
@@ -22,61 +21,25 @@ const DProjects = () => {
                 </tr>
                 </thead>
                 <tbody>
-                <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                    <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                        Apple MacBook Pro 17"
-                    </th>
-                    <td className="px-6 py-4">
-                        Silver
-                    </td>
-                    <td className="px-6 py-4">
-                        Laptop
-                    </td>
-                    <td className="px-6 py-4">
-                        $2999
-                    </td>
-                    <td className="px-6 py-4">
-                        <a href="#" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                    </td>
-                </tr>
-                <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                    <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                        Microsoft Surface Pro
-                    </th>
-                    <td className="px-6 py-4">
-                        White
-                    </td>
-                    <td className="px-6 py-4">
-                        Laptop PC
-                    </td>
-                    <td className="px-6 py-4">
-                        $1999
-                    </td>
-                    <td className="px-6 py-4">
-                        <a href="#" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                    </td>
-                </tr>
-                <tr className="bg-white dark:bg-gray-800">
-                    <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                        Magic Mouse 2
-                    </th>
-                    <td className="px-6 py-4">
-                        Black
-                    </td>
-                    <td className="px-6 py-4">
-                        Accessories
-                    </td>
-                    <td className="px-6 py-4">
-                        $99
-                    </td>
-                    <td className="px-6 py-4">
-                        <a href="#" className="font-medium text-blue-600 dark:text-blue-500 hover:underline mr-2">Edit</a>
-                        <button onClick={()=>{
-                            if (confirm("Do you wanna delete this")){
-                                console.log("delete")
-                        }}} className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Delete</button>
-                    </td>
-                </tr>
+                {data?.map(project => <tr key={project.id} className="bg-gray-800">
+                        <th scope="row" className="px-6 py-4 font-medium  whitespace-nowrap text-white">
+                            {project?.title}
+                        </th>
+                        <td className="px-6 py-4">
+                            <ul className='flex gap-x-2'>
+                                {project.skills.map(skill=><li className='py-2 px-4 bg-slate-600 rounded-3xl text-sky-200' key={skill}>{skill}</li>)}
+                            </ul>
+                        </td>
+                        <td className="px-6 py-4">
+                            <a href="#" className="font-medium  text-blue-500 hover:underline mr-2">Edit</a>
+                            <button onClick={async ()=>{
+                                if (confirm("Do you wanna delete this")){
+                                       deleteDocument('projects',project.id)
+                                }
+                                }} className="font-medium  text-blue-500 hover:underline">Delete</button>
+                        </td>
+                    </tr>
+                )}
                 </tbody>
             </table>
         </div>

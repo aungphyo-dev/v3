@@ -15,9 +15,10 @@ const ProjectCard = ({project}) => {
                                 <span
                             className="absolute -inset-x-4 -inset-y-2.5 hidden rounded md:-inset-x-6 md:-inset-y-4 lg:block"></span>
                                 <span>
-                                    {project?.name}
+                                    {project?.title}
                                 </span>
                         </h3>
+                        <p className="mt-2 text-sm leading-normal text-slate-300">{project.description}</p>
                         <div>
                             <a
                                 className="relative mt-2  mr-4 inline-flex gap-x-2 items-center text-sm font-medium text-slate-300 hover:text-teal-300 focus-visible:text-teal-300"
