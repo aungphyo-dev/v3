@@ -4,13 +4,16 @@ import {BiSolidRightArrow, BiLogoGithub, BiLogoInstagram} from 'react-icons/bi'
 import CV from '../../assets/aungpyaephyo.pdf'
 import {FaFacebookSquare} from "react-icons/fa";
 import Navbar from "../Navbar/Navbar.jsx";
+import {Link} from "react-router-dom";
 const Hero = () => {
     return (
         <section className='hero-session pt-[15px] lg:pt-0'  id="home">
                         <div className="hero-pt-1">
                             <div
                                 className='mb-3'>
-                                <AiFillHeart className='text-red-500 mb-1'/>
+                                <Link to='/login' className='cursor-auto'>
+                                    <AiFillHeart className='text-red-500 mb-1'/>
+                                </Link>
                                 <p className='hero-pt-1-subtitle'>
                                     SPEED UP <br/>
                                     COMMUNICATIONS
