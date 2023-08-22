@@ -22,6 +22,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
                 <Route path='/dash-board' element={<DGurd/>}>
                     <Route path='project/all' element={<DProjects/>}/>
                     <Route path='project/create' element={<DProjectForm/>}/>
+                    <Route path='project/edit/:id' element={<DProjectForm/>}/>
                 </Route>
                 <Route path='/projects' element={<Projects/>}/>
                 <Route path='*' element={<Error/>}/>

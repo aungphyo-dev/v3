@@ -37,6 +37,18 @@ const useFiresotre = () => {
         }, []);
         return data
     }
+    const singleCollection = (colName,id) =>{
+        const [data,setData] = useState(null)
+        const ref = doc(db,colName,id)
+           getDoc(ref).then(doc=>{
+              if (doc.exists()){
+                  setData(doc)
+              }else {
+                  console.log("not found")
+              }
+           })
+        return data;
+    }
     const addCollection = async (data,file=null) => {
         let insertData ;
         if (file){
@@ -60,6 +72,6 @@ const useFiresotre = () => {
     const updateDocument = () => {
 
     }
-    return{getAllCollection,getCollectionByLimit,addCollection,updateDocument,deleteDocument}
+    return{getAllCollection,getCollectionByLimit,singleCollection,addCollection,updateDocument,deleteDocument}
 }
 export default useFiresotre

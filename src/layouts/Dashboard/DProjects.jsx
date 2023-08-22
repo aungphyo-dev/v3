@@ -1,4 +1,5 @@
 import useFiresotre from "../../Hooks/useFiresotre.js";
+import {Link} from "react-router-dom";
 
 const DProjects = () => {
     const {getAllCollection} = useFiresotre()
@@ -31,7 +32,7 @@ const DProjects = () => {
                             </ul>
                         </td>
                         <td className="px-6 py-4">
-                            <a href="#" className="font-medium  text-blue-500 hover:underline mr-2">Edit</a>
+                            <Link to={`/dash-board/project/edit/${project.id}`} className="font-medium  text-blue-500 hover:underline mr-2">Edit</Link>
                             <button onClick={async ()=>{
                                 if (confirm("Do you wanna delete this")){
                                        deleteDocument('projects',project.id)
