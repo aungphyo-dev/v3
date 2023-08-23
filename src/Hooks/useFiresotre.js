@@ -4,11 +4,11 @@ import {addDoc, collection,getDoc, getDocs, limit, orderBy, query,doc,deleteDoc,
 import {getDownloadURL, ref, uploadBytes,deleteObject} from "firebase/storage";
 
 const useFiresotre = () => {
-    const getAllCollection = (colName) => {
+    const getAllCollection = (colName,sort="desc") => {
         const [data,setData] = useState([])
         useEffect(() => {
             let ref = collection(db,colName)
-            const q = query(ref,orderBy('created_at',"desc"))
+            const q = query(ref,orderBy('created_at',sort))
             getDocs(q).then((docs)=>{
                 let allData = [];
                 docs.forEach(doc=>{
@@ -49,7 +49,7 @@ const useFiresotre = () => {
            })
         return data;
     }
-    const addCollection = async (data,file=null) => {
+    const addCollection = async (colName,data,file=null) => {
         let insertData ;
         if (file){
             let fileName = Date.now().toString()+"_____"+file.name
@@ -62,16 +62,27 @@ const useFiresotre = () => {
             insertData = {...data}
         }
 
-        const ref1 = collection(db,"projects")
+        const ref1 = collection(db,colName)
         return await addDoc(ref1, insertData);
     }
     const deleteDocument = async (colName, id) => {
         const ref = doc(db, colName, id)
         await deleteDoc(ref)
     }
-    const updateDocument = async (colName,id) => {
-        const ref = doc(db,colName,id)
-        await updateDoc(ref)
+    const updateDocument = async (colName,id,data,file=null) => {
+        let updateData ;
+        if (file){
+            let fileName = Date.now().toString()+"_____"+file.name
+            let path = "/projects/"+fileName
+            const storageRef = ref(storage,path)
+            await uploadBytes(storageRef,file)
+            let url = await getDownloadURL(storageRef)
+            updateData = {image:url,...data}
+        }else {
+            updateData = {...data}
+        }
+        const ref2 = doc(db,colName,id)
+        return await updateDoc(ref2, updateData);
     }
 
     const deleteStorage = (urlF) => {

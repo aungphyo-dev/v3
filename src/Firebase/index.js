@@ -6,6 +6,7 @@ import {getStorage} from 'firebase/storage'
 const firebaseConfig = {
     apiKey: "AIzaSyDZwS5m1DqoU6S5PXI8mRCeoENR_TxosVs",
     authDomain: "typle-edc94.firebaseapp.com",
+    databaseURL: "https://typle-edc94-default-rtdb.asia-southeast1.firebasedatabase.app",
     projectId: "typle-edc94",
     storageBucket: "typle-edc94.appspot.com",
     messagingSenderId: "693999171349",

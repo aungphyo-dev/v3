@@ -2,16 +2,15 @@ import {useState} from "react";
 import {AiOutlineMenu} from "react-icons/ai";
 import {SiPolymerproject} from "react-icons/si";
 import {VscProject} from "react-icons/vsc";
-import {BsPencilSquare} from "react-icons/bs";
+import {BsFillInfoSquareFill, BsFillPersonFill, BsPencilSquare, BsPersonFillAdd} from "react-icons/bs";
 import {Link, NavLink, Outlet, useNavigate} from "react-router-dom";
 import useLogout from "../../Hooks/useLogout.js";
 import Cookies from "js-cookie";
 import {ImSwitch} from "react-icons/im";
-import useFiresotre from "../../Hooks/useFiresotre.js";
-
 const Dashboard = () => {
     const [side,setSide] = useState(true)
     const [dp1,setDp1] = useState(true)
+    const [dp2,setDp2] = useState(true)
     const {logout} = useLogout()
     const nav = useNavigate()
     const handleLogout =async () => {
@@ -19,7 +18,6 @@ const Dashboard = () => {
         Cookies.remove('user')
       nav("/login")
     }
-    const {deleteStorage} = useFiresotre()
   return(
       <section className='h-screen w-full flex justify-center items-center'>
             <div className='w-full  flex justify-center items-center'>
@@ -63,11 +61,34 @@ const Dashboard = () => {
                                         </li>
                                     </ul>
                                 </li>
+                                <li>
+                                    <button onClick={()=>setDp2(!dp2)} type="button" className="flex justify-between items-center w-full p-2  transition duration-75 rounded-lg group  text-white hover:bg-gray-700">
+                                        <div className='flex justify-center items-center'>
+                                            <BsFillInfoSquareFill className={`${side?"":"mr-1"} text-slate-200`}/>
+                                            {side && <span className="ml-3">About me</span>}
+                                        </div>
+                                        <svg className="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                            <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 1 4 4 4-4"/>
+                                        </svg>
+                                    </button>
+                                    <ul className={`${dp2?"hidden":"block"} py-2 space-y-2`}>
+                                        <li>
+                                            <NavLink to='/dash-board/about/all' className="flex items-center w-full p-2 transition duration-75 rounded-lg group text-white hover:bg-gray-700">
+                                                <BsFillPersonFill className='text-slate-200'/>
+                                                {side && <span className="ml-3">About</span>}
+                                            </NavLink>
+                                        </li>
+                                        <li>
+                                            <NavLink to='/dash-board/about/create' className="flex items-center w-full p-2 transition duration-75 rounded-lg group text-white hover:bg-gray-700">
+                                                <BsPersonFillAdd className='text-slate-200'/>
+                                                {side && <span className="ml-3">Create About</span>}
+                                            </NavLink>
+                                        </li>
+                                    </ul>
+                                </li>
                             </ul>
                         </div>
-                        <button onClick={()=>{
-                            deleteStorage('https://firebasestorage.googleapis.com/v0/b/typle-edc94.appspot.com/o/projects%2F1692679375504_____AiContentDetector.png?alt=media&token=82da6ade-0492-448f-a608-d087168c88ce')
-                        }} type="button" className="flex justify-center items-center gap-x-2 py-2.5 px-5 mr-2 mb-2 text-sm font-medium  focus:outline-none  rounded-lg border  focus:z-10 focus:ring-4  focus:ring-gray-700 bg-gray-800 text-gray-400 border-gray-600 hover:text-white hover:bg-gray-700">
+                        <button onClick={handleLogout} type="button" className="flex justify-center items-center gap-x-2 py-2.5 px-5 mr-2 mb-2 text-sm font-medium  focus:outline-none  rounded-lg border  focus:z-10 focus:ring-4  focus:ring-gray-700 bg-gray-800 text-gray-400 border-gray-600 hover:text-white hover:bg-gray-700">
                             <ImSwitch className='inline-flex'/>
                             {side&&"logout"}
                         </button>
@@ -75,6 +96,7 @@ const Dashboard = () => {
                     </div>
                 </div>
                 <div className='w-full px-2 h-screen overflow-y-auto'>
+
                     <Outlet/>
                 </div>
             </div>

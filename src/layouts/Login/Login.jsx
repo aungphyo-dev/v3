@@ -5,12 +5,16 @@ import {Navigate, useNavigate} from "react-router-dom";
 
 const Login = () => {
     const data = Cookies.get("user")
-    if (!!data){
-        return <Navigate to='/dash-board'/>
+    if (data){
+        return <Navigate to='/dash-board/project'/>
     }
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     const [email,setEmail] = useState("")
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     const [password,setPassword] = useState("")
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     const {error,login} = useLogin()
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     const nav = useNavigate()
     const handleLogin =async (e) => {
         e.preventDefault();

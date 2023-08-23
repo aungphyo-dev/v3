@@ -8,7 +8,7 @@ import useFiresotre from "./Hooks/useFiresotre.js";
 import Loading from "./layouts/Loading/Loading.jsx";
 const App = () => {
     const [mousePos, setMousePos] = useState({});
-    const {getCollectionByLimit} = useFiresotre()
+    const {getCollectionByLimit,getAllCollection} = useFiresotre()
     const [loading,setLoading] = useState(true)
     useEffect(() => {
         const handleMouseMove = (event) => {
@@ -24,12 +24,13 @@ const App = () => {
         };
     }, []);
     let projects = getCollectionByLimit('projects',5)
+    const data = getAllCollection('about',"asc")
     useEffect(() => {
         setTimeout(()=>{
             setLoading(false)
-        },1500)
-    }, [projects]);
-    if (loading && !!projects){
+        },2000)
+    }, [projects,data]);
+    if (loading && !!projects && data){
         return <Loading/>
     }else {
         return(
@@ -41,7 +42,7 @@ const App = () => {
                             <Home/>
                         </div>
                         <div className='min-h-screen px-5 lg:px-16'>
-                            <About/>
+                            <About data={data}/>
                             <Experience/>
                             <Project projects={projects}/>
                             <Contact/>

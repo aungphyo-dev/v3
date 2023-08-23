@@ -11,6 +11,10 @@ import Error from "./layouts/Error/Error.jsx";
 import Login from "./layouts/Login/Login.jsx";
 import DGurd from "./layouts/Guard/DGurd.jsx";
 import Projects from "./layouts/Project/Projects.jsx";
+import DProjectFormEdit from "./layouts/Dashboard/DProjectFormEdit.jsx";
+import DAbout from "./layouts/Dashboard/DAbout.jsx";
+import DAboutForm from "./layouts/Dashboard/DAboutForm.jsx";
+import DAboutFormEdit from "./layouts/Dashboard/DAboutFormEdit.jsx";
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -22,7 +26,10 @@ ReactDOM.createRoot(document.getElementById('root')).render(
                 <Route path='/dash-board' element={<DGurd/>}>
                     <Route path='project/all' element={<DProjects/>}/>
                     <Route path='project/create' element={<DProjectForm/>}/>
-                    <Route path='project/edit/:id' element={<DProjectForm/>}/>
+                    <Route path='project/edit/:id' element={<DProjectFormEdit/>}/>
+                    <Route path='about/all' element={<DAbout/>}/>
+                    <Route path='about/create' element={<DAboutForm/>}/>
+                    <Route path='about/edit/:id' element={<DAboutFormEdit/>}/>
                 </Route>
                 <Route path='/projects' element={<Projects/>}/>
                 <Route path='*' element={<Error/>}/>
