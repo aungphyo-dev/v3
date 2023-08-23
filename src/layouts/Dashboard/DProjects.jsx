@@ -1,14 +1,16 @@
 import useFiresotre from "../../Hooks/useFiresotre.js";
 import {Link} from "react-router-dom";
+import {useState} from "react";
 
 const DProjects = () => {
     const {getAllCollection} = useFiresotre()
     const data = getAllCollection('projects')
     const {deleteDocument} = useFiresotre()
+    const [del,setDelete] = useState(false)
     return(
         <div className="relative h-screen shadow-md sm:rounded-lg pb-5">
             <table className="w-full overflow-auto text-sm text-left text-gray-400">
-                <thead className="text-xs  uppercase  bg-gray-700 text-gray-400">
+                <thead className="text-xs  uppercase  bg-gray-700 text-gray-400 sticky top-0">
                 <tr>
                     <th scope="col" className="px-6 py-3">
                         Project name
@@ -35,7 +37,8 @@ const DProjects = () => {
                             <Link to={`/dash-board/project/edit/${project.id}`} className="font-medium  text-blue-500 hover:underline mr-2">Edit</Link>
                             <button onClick={async ()=>{
                                 if (confirm("Do you wanna delete this")){
-                                       deleteDocument('projects',project.id)
+                                       await deleteDocument('projects',project.id)
+                                        setDelete(!del)
                                 }
                                 }} className="font-medium  text-blue-500 hover:underline">Delete</button>
                         </td>

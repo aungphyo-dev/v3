@@ -5,7 +5,7 @@ import Project from "./layouts/Project/Project.jsx";
 import Experience from "./layouts/Experience/Experience.jsx";
 import Contact from "./layouts/Contact/Contact.jsx";
 import useFiresotre from "./Hooks/useFiresotre.js";
-import Loading from "./Loading/Loading.jsx";
+import Loading from "./layouts/Loading/Loading.jsx";
 const App = () => {
     const [mousePos, setMousePos] = useState({});
     const {getCollectionByLimit} = useFiresotre()

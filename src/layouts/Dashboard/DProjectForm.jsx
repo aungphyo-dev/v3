@@ -67,7 +67,8 @@ const DProjectForm = () => {
         }
     }
     const addSkills = () => {
-      setSkills((prevState)=>[skill,...prevState])
+        setSkills((prevState)=>[skill,...prevState])
+        setSkill('')
     }
     const removeSkill = (skill) => {
         setSkills((prevState)=>prevState.filter((prev)=>prev!==skill))
@@ -91,6 +92,12 @@ const DProjectForm = () => {
             })
         }else{
             setEdit(false)
+            setTitle('')
+            setDemo('')
+            setGithub('')
+            setDescription('')
+            setUrl('')
+            setSkills([])
         }
     }, []);
   return (

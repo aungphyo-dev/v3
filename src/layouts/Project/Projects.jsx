@@ -2,7 +2,7 @@ import useFiresotre from "../../Hooks/useFiresotre.js";
 import AllProjectCard from "../../components/Project_Card/AllProjectCard.jsx";
 import {Link} from "react-router-dom";
 import {useEffect, useState} from "react";
-import Loading from "../../Loading/Loading.jsx";
+import Loading from "../Loading/Loading.jsx";
 const Projects = () => {
     const [mousePos, setMousePos] = useState({});
     useEffect(() => {

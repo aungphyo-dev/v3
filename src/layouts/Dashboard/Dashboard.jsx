@@ -3,9 +3,11 @@ import {AiOutlineMenu} from "react-icons/ai";
 import {SiPolymerproject} from "react-icons/si";
 import {VscProject} from "react-icons/vsc";
 import {BsPencilSquare} from "react-icons/bs";
-import { NavLink, Outlet, useNavigate} from "react-router-dom";
+import {Link, NavLink, Outlet, useNavigate} from "react-router-dom";
 import useLogout from "../../Hooks/useLogout.js";
 import Cookies from "js-cookie";
+import {ImSwitch} from "react-icons/im";
+import useFiresotre from "../../Hooks/useFiresotre.js";
 
 const Dashboard = () => {
     const [side,setSide] = useState(true)
@@ -17,16 +19,17 @@ const Dashboard = () => {
         Cookies.remove('user')
       nav("/login")
     }
+    const {deleteStorage} = useFiresotre()
   return(
       <section className='h-screen w-full flex justify-center items-center'>
-            <div className='w-full flex justify-center items-center'>
+            <div className='w-full  flex justify-center items-center'>
                 <div className={side?"w-[30%]":""}>
                     <div className={`w-full  px-5 py-5 min-h-screen bg-gray-800`}>
                         {!side&&<button onClick={()=>setSide(!side)} className='w-full cursor-pointer'>
                             <AiOutlineMenu className='pointer-events-none mx-auto w-5 h-5 transition duration-75 text-gray-400 group-hover group-hover:text-white'/>
                         </button>}
                         <div className="flex justify-between items-center">
-                            {side&&<h5 className="text-base font-semibold uppercase text-gray-400">Typle</h5>}
+                            {side&&<Link to='/dash-board' className="text-base font-semibold uppercase text-gray-400">Dashboard</Link>}
                             {side&& <button onClick={()=>setSide(!side)} type="button" className="text-gray-400 bg-transparent hover rounded-lg text-sm w-8 h-8 inline-flex items-center justify-center hover:bg-gray-600 hover:text-white" >
                                 <svg className="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
                                     <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
@@ -62,11 +65,16 @@ const Dashboard = () => {
                                 </li>
                             </ul>
                         </div>
-                        <button onClick={handleLogout} type="button" className=" py-2.5 px-5 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Logout</button>
+                        <button onClick={()=>{
+                            deleteStorage('https://firebasestorage.googleapis.com/v0/b/typle-edc94.appspot.com/o/projects%2F1692679375504_____AiContentDetector.png?alt=media&token=82da6ade-0492-448f-a608-d087168c88ce')
+                        }} type="button" className="flex justify-center items-center gap-x-2 py-2.5 px-5 mr-2 mb-2 text-sm font-medium  focus:outline-none  rounded-lg border  focus:z-10 focus:ring-4  focus:ring-gray-700 bg-gray-800 text-gray-400 border-gray-600 hover:text-white hover:bg-gray-700">
+                            <ImSwitch className='inline-flex'/>
+                            {side&&"logout"}
+                        </button>
 
                     </div>
                 </div>
-                <div className='w-full px-5 h-screen overflow-y-auto py-5'>
+                <div className='w-full px-2 h-screen overflow-y-auto'>
                     <Outlet/>
                 </div>
             </div>

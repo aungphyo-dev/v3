@@ -1,7 +1,7 @@
 import {db, storage} from "../Firebase/index.js";
 import {useEffect, useState} from "react";
-import {addDoc, collection, getDocs, limit, orderBy, query,doc,deleteDoc} from 'firebase/firestore'
-import {getDownloadURL, ref, uploadBytes} from "firebase/storage";
+import {addDoc, collection,getDoc, getDocs, limit, orderBy, query,doc,deleteDoc,updateDoc} from 'firebase/firestore'
+import {getDownloadURL, ref, uploadBytes,deleteObject} from "firebase/storage";
 
 const useFiresotre = () => {
     const getAllCollection = (colName) => {
@@ -69,9 +69,20 @@ const useFiresotre = () => {
         const ref = doc(db, colName, id)
         await deleteDoc(ref)
     }
-    const updateDocument = () => {
-
+    const updateDocument = async (colName,id) => {
+        const ref = doc(db,colName,id)
+        await updateDoc(ref)
     }
-    return{getAllCollection,getCollectionByLimit,singleCollection,addCollection,updateDocument,deleteDocument}
+
+    const deleteStorage = (urlF) => {
+        const desertRef = ref(storage, urlF);
+// Delete the file
+        deleteObject(desertRef).then(() => {
+            console.log('delete')
+        }).catch((error) => {
+            console.log(error)
+        });
+    }
+    return{getAllCollection,deleteStorage,getCollectionByLimit,singleCollection,addCollection,updateDocument,deleteDocument}
 }
 export default useFiresotre
