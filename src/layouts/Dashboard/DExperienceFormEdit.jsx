@@ -1,9 +1,12 @@
-import {useState} from "react";
-import {serverTimestamp} from 'firebase/firestore'
+import {useEffect, useState} from "react";
+import {doc, getDoc, serverTimestamp} from 'firebase/firestore'
 import useFiresotre from "../../Hooks/useFiresotre.js";
 import {BsPlusSquareFill} from "react-icons/bs";
 import {GrFormClose} from "react-icons/gr";
-const DExperienceForm = () => {
+import {useNavigate, useParams} from "react-router-dom";
+import {db} from "../../Firebase/index.js";
+const DExperienceFormEdit = () => {
+    const {id} = useParams()
     const [company,setCompany] = useState("");
     const [experience,setExperience] = useState("");
     const [description,setDescription] = useState("");
@@ -11,7 +14,8 @@ const DExperienceForm = () => {
     const [skills,setSkills] = useState([])
     const [loading,setLoading] = useState(false)
     const [position,setPosition] = useState('')
-    const {addCollection} = useFiresotre()
+    const nav = useNavigate()
+    const {updateDocument} = useFiresotre()
     const handleSubmit = async (e)=>{
         e.preventDefault()
         setLoading(true)
@@ -23,15 +27,14 @@ const DExperienceForm = () => {
             skills:skills,
             created_at:serverTimestamp()
         }
-        const res = await addCollection("experience",data)
-        if (res){
+        await updateDocument("experience",id,data)
             setCompany('')
             setExperience('')
             setDescription('')
             setSkills([])
             setPosition('')
             setLoading(false)
-        }
+        nav('/dash-board/experience/all')
     }
     const addSkills = () => {
         setSkills((prevState)=>[skill,...prevState])
@@ -40,6 +43,21 @@ const DExperienceForm = () => {
     const removeSkill = (skill) => {
         setSkills((prevState)=>prevState.filter((prev)=>prev!==skill))
     }
+    useEffect(() => {
+        const ref = doc(db,"experience",id)
+        getDoc(ref).then(doc=>{
+            if (doc.exists()){
+                const {company,experience,description,skills,position} = doc.data()
+                setCompany(company)
+                setExperience(experience)
+                setDescription(description)
+                setSkills(skills)
+                setPosition(position)
+            }else {
+                console.log("not found")
+            }
+        })
+    }, []);
     return (
         <form onSubmit={handleSubmit} className='mt-5'>
             <div className="relative z-0 w-full mb-6 group">
@@ -69,9 +87,9 @@ const DExperienceForm = () => {
                 {skills?.map(skill=><li className='bg-gray-300 rounded-3xl px-2 py-1' key={skill}>{skill} <GrFormClose className='inline-flex cursor-pointer' onClick={()=>removeSkill(skill)}/></li>)}
             </ul>
             <button type="submit" className="text-white  focus:ring-4 focus:outline-none  font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center bg-blue-600 hover:bg-blue-700">
-                {loading?"creating....":"create"}
+                {loading?"updating....":"update"}
             </button>
         </form>
     )
 }
-export default DExperienceForm
+export default DExperienceFormEdit

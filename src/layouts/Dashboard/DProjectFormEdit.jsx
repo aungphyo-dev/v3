@@ -4,7 +4,7 @@ import useFiresotre from "../../Hooks/useFiresotre.js";
 import {BsPlusSquareFill} from "react-icons/bs";
 import {GrFormClose} from "react-icons/gr";
 import {db} from "../../Firebase/index.js";
-import {useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 const DProjectFormEdit = () => {
     const {id} = useParams()
     const [file,setFile] = useState(null)
@@ -33,6 +33,7 @@ const DProjectFormEdit = () => {
     const [skill,setSkill] = useState('')
     const [skills,setSkills] = useState([])
     const [loading,setLoading] = useState(false)
+    const nav = useNavigate()
     const handleSubmit = async (e)=>{
         e.preventDefault()
         setLoading(true)
@@ -48,10 +49,12 @@ const DProjectFormEdit = () => {
             await deleteStorage(deleteUrl)
             await updateDocument('projects',id,data,file)
             handleReset()
+            nav('/dash-board/project/all')
         }else{
             data.image = deleteUrl;
            await updateDocument('projects',id,data)
            handleReset()
+            nav('/dash-board/project/all')
         }
     }
     const handleReset = ()=>{

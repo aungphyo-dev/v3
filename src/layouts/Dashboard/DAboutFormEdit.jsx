@@ -1,14 +1,15 @@
 import {doc, getDoc, serverTimestamp} from "firebase/firestore";
 import {useEffect, useState} from "react";
 import useFiresotre from "../../Hooks/useFiresotre.js";
-import {useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import {db} from "../../Firebase/index.js";
 
 const DAboutFormEdit = () => {
     const {id} = useParams()
     const [about,setAbout] = useState('')
     const [loading,setLoading] = useState(false)
-    const {addCollection} = useFiresotre()
+    const {updateDocument} = useFiresotre()
+    const nav = useNavigate()
     const handleSubmit = async (e)=>{
         e.preventDefault()
         setLoading(true)
@@ -16,11 +17,10 @@ const DAboutFormEdit = () => {
             about:about,
             created_at:serverTimestamp()
         }
-        const res = await addCollection("about",data)
-        if (res){
-            setAbout('')
-            setLoading(false)
-        }
+        await updateDocument("about",id,data)
+        setAbout('')
+        setLoading(false)
+        nav('/dash-board/about/all')
     }
     useEffect(() => {
         const ref = doc(db,"about",id)
