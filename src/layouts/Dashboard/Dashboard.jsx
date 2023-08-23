@@ -1,6 +1,6 @@
 import {useState} from "react";
 import {AiOutlineMenu} from "react-icons/ai";
-import {SiPolymerproject} from "react-icons/si";
+import {SiExpensify, SiPolymerproject} from "react-icons/si";
 import {VscProject} from "react-icons/vsc";
 import {BsFillInfoSquareFill, BsFillPersonFill, BsPencilSquare, BsPersonFillAdd} from "react-icons/bs";
 import {Link, NavLink, Outlet, useNavigate} from "react-router-dom";
@@ -90,7 +90,7 @@ const Dashboard = () => {
                                 <li>
                                     <button onClick={()=>setDp3(!dp3)} type="button" className="flex justify-between items-center w-full p-2  transition duration-75 rounded-lg group  text-white hover:bg-gray-700">
                                         <div className='flex justify-center items-center'>
-                                            <BsFillInfoSquareFill className={`${side?"":"mr-1"} text-slate-200`}/>
+                                            <SiExpensify className={`${side?"":"mr-1"} text-slate-200`}/>
                                             {side && <span className="ml-3">Experience</span>}
                                         </div>
                                         <svg className="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
