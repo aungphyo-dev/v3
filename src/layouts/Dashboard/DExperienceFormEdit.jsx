@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import {doc, getDoc, serverTimestamp} from 'firebase/firestore'
+import {doc, getDoc} from 'firebase/firestore'
 import useFiresotre from "../../Hooks/useFiresotre.js";
 import {BsPlusSquareFill} from "react-icons/bs";
 import {GrFormClose} from "react-icons/gr";
@@ -25,7 +25,6 @@ const DExperienceFormEdit = () => {
             experience:experience,
             position:position,
             skills:skills,
-            created_at:serverTimestamp()
         }
         await updateDocument("experience",id,data)
             setCompany('')

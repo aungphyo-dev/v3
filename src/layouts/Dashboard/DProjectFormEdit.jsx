@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import {doc, getDoc, serverTimestamp} from 'firebase/firestore'
+import {doc, getDoc} from 'firebase/firestore'
 import useFiresotre from "../../Hooks/useFiresotre.js";
 import {BsPlusSquareFill} from "react-icons/bs";
 import {GrFormClose} from "react-icons/gr";
@@ -43,7 +43,6 @@ const DProjectFormEdit = () => {
             demo:demo,
             github:github,
             skills:skills,
-            created_at:serverTimestamp()
         }
         if (file){
             await deleteStorage(deleteUrl)
