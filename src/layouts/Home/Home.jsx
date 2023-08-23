@@ -7,7 +7,7 @@ import Navbar from "../Navbar/Navbar.jsx";
 import {Link} from "react-router-dom";
 const Hero = () => {
     return (
-        <section className='hero-session pt-[15px] lg:pt-0'  id="home">
+        <section className='hero-session pt-[15px] lg:pt-[35px]'  id="home">
                         <div className="hero-pt-1">
                             <div
                                 className='mb-3'>

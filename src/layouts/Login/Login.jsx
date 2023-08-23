@@ -6,7 +6,7 @@ import {Navigate, useNavigate} from "react-router-dom";
 const Login = () => {
     const data = Cookies.get("user")
     if (data){
-        return <Navigate to='/dash-board/project'/>
+        return <Navigate to='/dash-board/project/all'/>
     }
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const [email,setEmail] = useState("")

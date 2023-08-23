@@ -15,6 +15,8 @@ import DProjectFormEdit from "./layouts/Dashboard/DProjectFormEdit.jsx";
 import DAbout from "./layouts/Dashboard/DAbout.jsx";
 import DAboutForm from "./layouts/Dashboard/DAboutForm.jsx";
 import DAboutFormEdit from "./layouts/Dashboard/DAboutFormEdit.jsx";
+import DExperience from "./layouts/Dashboard/DExperience.jsx";
+import DExperienceForm from "./layouts/Dashboard/DExperienceForm.jsx";
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -30,6 +32,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
                     <Route path='about/all' element={<DAbout/>}/>
                     <Route path='about/create' element={<DAboutForm/>}/>
                     <Route path='about/edit/:id' element={<DAboutFormEdit/>}/>
+                    <Route path='experience/all' element={<DExperience/>}/>
+                    <Route path='experience/create' element={<DExperienceForm/>}/>
                 </Route>
                 <Route path='/projects' element={<Projects/>}/>
                 <Route path='*' element={<Error/>}/>
