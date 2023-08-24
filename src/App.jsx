@@ -25,7 +25,7 @@ const App = () => {
             );
         };
     }, []);
-    let projects = getCollectionByLimit('projects',5)
+    let projects = getCollectionByLimit('projects',4)
     const data = getAllCollection('about',"asc")
     const experience = getAllCollection('experience')
     useEffect(() => {
