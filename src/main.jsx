@@ -1,4 +1,3 @@
-import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import './index.css'
@@ -20,7 +19,6 @@ import DExperienceForm from "./layouts/Dashboard/DExperienceForm.jsx";
 import DExperienceFormEdit from "./layouts/Dashboard/DExperienceFormEdit.jsx";
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
     <Provider store={store}>
         <BrowserRouter>
             <Routes>
@@ -42,5 +40,4 @@ ReactDOM.createRoot(document.getElementById('root')).render(
             </Routes>
         </BrowserRouter>
     </Provider>
-  </React.StrictMode>,
 )
