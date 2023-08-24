@@ -25,7 +25,7 @@ const useFiresotre = () => {
         const [data,setData] = useState([])
         useEffect(() => {
             let ref = collection(db,colName)
-            const q = query(ref,limit(lit))
+            const q = query(ref,limit(lit),orderBy("created_at","desc"))
             onSnapshot(q,(docs)=>{
                 let limitDatas = [];
                 docs.forEach(doc=>{
