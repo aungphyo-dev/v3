@@ -1,6 +1,6 @@
 import {db, storage} from "../Firebase/index.js";
 import {useEffect, useState} from "react";
-import {addDoc, collection,getDoc, getDocs, limit, orderBy, query,doc,deleteDoc,updateDoc} from 'firebase/firestore'
+import {addDoc, collection,getDoc, onSnapshot, limit, orderBy, query,doc,deleteDoc,updateDoc} from 'firebase/firestore'
 import {getDownloadURL, ref, uploadBytes,deleteObject} from "firebase/storage";
 
 const useFiresotre = () => {
@@ -9,7 +9,7 @@ const useFiresotre = () => {
         useEffect(() => {
             let ref = collection(db,colName)
             const q = query(ref,orderBy('created_at',sort))
-            getDocs(q).then((docs)=>{
+            onSnapshot(q,(docs)=>{
                 let allData = [];
                 docs.forEach(doc=>{
                     let getData = {id:doc.id,...doc.data()}
@@ -26,7 +26,7 @@ const useFiresotre = () => {
         useEffect(() => {
             let ref = collection(db,colName)
             const q = query(ref,limit(lit))
-            getDocs(q).then((docs)=>{
+            onSnapshot(q,(docs)=>{
                 let limitDatas = [];
                 docs.forEach(doc=>{
                     let limitData = {id:doc.id,...doc.data()}
@@ -40,12 +40,12 @@ const useFiresotre = () => {
     const singleCollection = (colName,id) =>{
         const [data,setData] = useState(null)
         const ref = doc(db,colName,id)
-           getDoc(ref).then(doc=>{
-              if (doc.exists()){
-                  setData(doc)
-              }else {
-                  console.log("not found")
-              }
+           onSnapshot(ref,doc=>{
+               if (doc.exists()){
+                   setData(doc)
+               }else {
+                   console.log("not found")
+               }
            })
         return data;
     }

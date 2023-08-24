@@ -6,10 +6,12 @@ import Experience from "./layouts/Experience/Experience.jsx";
 import Contact from "./layouts/Contact/Contact.jsx";
 import useFiresotre from "./Hooks/useFiresotre.js";
 import Loading from "./layouts/Loading/Loading.jsx";
+
 const App = () => {
     const [mousePos, setMousePos] = useState({});
     const {getCollectionByLimit,getAllCollection} = useFiresotre()
     const [loading,setLoading] = useState(true)
+
     useEffect(() => {
         const handleMouseMove = (event) => {
             setMousePos({ x: event.clientX, y: event.clientY });

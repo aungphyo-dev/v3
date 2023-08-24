@@ -33,7 +33,6 @@
 /* Handle */
 ::-webkit-scrollbar-thumb {
     background: #562aac;
-    border-radius: 3rem;
 }
 
 /* Handle on hover */
