@@ -49,11 +49,11 @@ const useFiresotre = () => {
            })
         return data;
     }
-    const addCollection = async (colName,data,file=null) => {
+    const addCollection = async (colName,data,file=null,str="projects") => {
         let insertData ;
         if (file){
             let fileName = Date.now().toString()+"_____"+file.name
-            let path = "/projects/"+fileName
+            let path = `/${str}/`+fileName
             const storageRef = ref(storage,path)
             await uploadBytes(storageRef,file)
              let url = await getDownloadURL(storageRef)
@@ -69,11 +69,11 @@ const useFiresotre = () => {
         const ref = doc(db, colName, id)
         await deleteDoc(ref)
     }
-    const updateDocument = async (colName,id,data,file=null) => {
+    const updateDocument = async (colName,id,data,file=null,st="projects") => {
         let updateData ;
         if (file){
             let fileName = Date.now().toString()+"_____"+file.name
-            let path = "/projects/"+fileName
+            let path = `/${st}/`+fileName
             const storageRef = ref(storage,path)
             await uploadBytes(storageRef,file)
             let url = await getDownloadURL(storageRef)
@@ -87,7 +87,7 @@ const useFiresotre = () => {
 
     const deleteStorage = (urlF) => {
         const desertRef = ref(storage, urlF);
-// Delete the file
+        // Delete the file
         deleteObject(desertRef).then(() => {
             console.log('delete')
         }).catch((error) => {

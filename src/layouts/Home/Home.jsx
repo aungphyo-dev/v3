@@ -1,11 +1,25 @@
 import './home.css'
 import {AiFillHeart} from 'react-icons/ai'
 import {BiSolidRightArrow, BiLogoGithub, BiLogoInstagram} from 'react-icons/bi'
-import CV from '../../assets/typle.pdf'
 import {FaFacebookSquare} from "react-icons/fa";
 import Navbar from "../Navbar/Navbar.jsx";
 import {Link} from "react-router-dom";
-const Hero = () => {
+import {useEffect, useState} from "react";
+import {doc, getDoc} from "firebase/firestore";
+import {db} from "../../Firebase/index.js";
+const Hero = ({}) => {
+    const [url,setUrl] = useState("")
+    useEffect(() => {
+        const ref = doc(db,"cv-form","uqd4H1FV9bfJFBOeGune")
+        getDoc(ref).then(doc=>{
+            if (doc.exists()){
+                const {image} = doc.data()
+                setUrl(image)
+            }else {
+                console.log("not found")
+            }
+        })
+    }, []);
     return (
         <section className='hero-session pt-[15px] lg:pt-[35px]'  id="home">
                         <div className="hero-pt-1">
@@ -35,7 +49,7 @@ const Hero = () => {
                             <div
                                 className='mb-5'>
                                 <div className='hero-pt-1-btn-container'>
-                                    <a href={CV} download className='hero-pt-1-btn  peer'>
+                                    <a href={url} download className='hero-pt-1-btn  peer'>
                                         Download Cv
                                     </a>
                                     <BiSolidRightArrow className='hero-pt-1-icons'/>

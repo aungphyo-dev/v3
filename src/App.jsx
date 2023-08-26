@@ -33,7 +33,7 @@ const App = () => {
             setLoading(false)
         },3500)
     }, [projects,data,experience]);
-    if (loading && !!projects && data && experience){
+    if (loading && projects && data && experience){
         return <Loading/>
     }else {
         return(

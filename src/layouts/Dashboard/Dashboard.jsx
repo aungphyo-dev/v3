@@ -2,7 +2,14 @@ import {useState} from "react";
 import {AiOutlineMenu} from "react-icons/ai";
 import {SiExpensify, SiPolymerproject} from "react-icons/si";
 import {VscProject} from "react-icons/vsc";
-import {BsFillInfoSquareFill, BsFillPersonFill, BsPencilSquare, BsPersonFillAdd} from "react-icons/bs";
+import {
+    BsExplicit,
+    BsExplicitFill,
+    BsFillInfoSquareFill,
+    BsFillPersonFill,
+    BsPencilSquare,
+    BsPersonFillAdd
+} from "react-icons/bs";
 import {Link, NavLink, Outlet, useNavigate} from "react-router-dom";
 import useLogout from "../../Hooks/useLogout.js";
 import Cookies from "js-cookie";
@@ -60,6 +67,12 @@ const Dashboard = () => {
                                                 {side && <span className="ml-3">Create Project</span>}
                                             </NavLink>
                                         </li>
+                                        <li>
+                                            <NavLink to='/dash-board/cv/update' className="flex items-center w-full p-2 transition duration-75 rounded-lg group text-white hover:bg-gray-700">
+                                                <BsPencilSquare className='text-slate-200'/>
+                                                {side && <span className="ml-3">Update CV</span>}
+                                            </NavLink>
+                                        </li>
                                     </ul>
                                 </li>
                                 <li>
@@ -100,13 +113,13 @@ const Dashboard = () => {
                                     <ul className={`${dp3?"hidden":"block"} py-2 space-y-2`}>
                                         <li>
                                             <NavLink to='/dash-board/experience/all' className="flex items-center w-full p-2 transition duration-75 rounded-lg group text-white hover:bg-gray-700">
-                                                <BsFillPersonFill className='text-slate-200'/>
+                                                <BsExplicitFill className='text-slate-200'/>
                                                 {side && <span className="ml-3">Experience All</span>}
                                             </NavLink>
                                         </li>
                                         <li>
                                             <NavLink to='/dash-board/experience/create' className="flex items-center w-full p-2 transition duration-75 rounded-lg group text-white hover:bg-gray-700">
-                                                <BsPersonFillAdd className='text-slate-200'/>
+                                                <BsExplicit className='text-slate-200'/>
                                                 {side && <span className="ml-3">Create Experience</span>}
                                             </NavLink>
                                         </li>

@@ -17,6 +17,7 @@ import DAboutFormEdit from "./layouts/Dashboard/DAboutFormEdit.jsx";
 import DExperience from "./layouts/Dashboard/DExperience.jsx";
 import DExperienceForm from "./layouts/Dashboard/DExperienceForm.jsx";
 import DExperienceFormEdit from "./layouts/Dashboard/DExperienceFormEdit.jsx";
+import DCVForm from "./layouts/Dashboard/DCVForm.jsx";
 
 ReactDOM.createRoot(document.getElementById('root')).render(
     <Provider store={store}>
@@ -30,6 +31,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
                     <Route path='project/edit/:id' element={<DProjectFormEdit/>}/>
                     <Route path='about/all' element={<DAbout/>}/>
                     <Route path='about/create' element={<DAboutForm/>}/>
+                    <Route path="cv/update" element={<DCVForm/>}/>
                     <Route path='about/edit/:id' element={<DAboutFormEdit/>}/>
                     <Route path='experience/all' element={<DExperience/>}/>
                     <Route path='experience/create' element={<DExperienceForm/>}/>
