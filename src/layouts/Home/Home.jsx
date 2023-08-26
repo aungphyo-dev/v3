@@ -1,7 +1,7 @@
 import './home.css'
 import {AiFillHeart} from 'react-icons/ai'
 import {BiSolidRightArrow, BiLogoGithub, BiLogoInstagram} from 'react-icons/bi'
-import CV from '../../assets/aungpyaephyo.pdf'
+import CV from '../../assets/typle.pdf'
 import {FaFacebookSquare} from "react-icons/fa";
 import Navbar from "../Navbar/Navbar.jsx";
 import {Link} from "react-router-dom";

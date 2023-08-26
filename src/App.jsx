@@ -31,7 +31,7 @@ const App = () => {
     useEffect(() => {
         setTimeout(()=>{
             setLoading(false)
-        },2000)
+        },3500)
     }, [projects,data,experience]);
     if (loading && !!projects && data && experience){
         return <Loading/>
