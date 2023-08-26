@@ -8,7 +8,7 @@ import useLogout from "../../Hooks/useLogout.js";
 import Cookies from "js-cookie";
 import {ImSwitch} from "react-icons/im";
 const Dashboard = () => {
-    const [side,setSide] = useState(true)
+    const [side,setSide] = useState(false)
     const [dp1,setDp1] = useState(true)
     const [dp2,setDp2] = useState(true)
     const [dp3,setDp3] = useState(true)
