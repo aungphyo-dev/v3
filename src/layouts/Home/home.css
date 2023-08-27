@@ -30,7 +30,7 @@
     @apply text-blue-600 transition-transform duration-500 peer-hover:-rotate-180
 }
 .hero-pt-1-social-link {
-    @apply p-2 bg-gray-600  text-black bg-gray-400 border  border-gray-400 hover:bg-transparent hover:text-white rounded-full
+    @apply p-2   text-black bg-gray-400 border  border-gray-400 hover:bg-transparent hover:text-white rounded-full
 }
 .project-countUp{
     @apply px-2 w-[137px] h-[50px] bg-gray-100  text-[#11234]  rounded-lg  absolute z-[20] top-[40%] right-[5%] flex justify-center items-center font-bold
