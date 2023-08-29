@@ -40,6 +40,7 @@ const App = () => {
             <main className='relative w-full'>
                 <div className='pointer-events-none fixed inset-0 z-30' style={{background:`radial-gradient(600px at ${mousePos.x}px ${mousePos.y}px, rgba(29, 78, 216, 0.15), transparent 80%)`}}></div>
                 <div className='w-full min-h-screen' >
+                    <div className="progress fixed top-0 right-0 left-0 z-[2000]"></div>
                     <div className="max-w-screen-xl mx-auto grid grid-cols-1 lg:grid-cols-2">
                         <div className='h-auto lg:h-screen lg:sticky top-0 flex flex-col justify-start items-center px-5 lg:px-14'>
                             <Home/>

@@ -7,7 +7,7 @@ import {Link} from "react-router-dom";
 import {useEffect, useState} from "react";
 import {doc, getDoc} from "firebase/firestore";
 import {db} from "../../Firebase/index.js";
-const Hero = ({}) => {
+const Hero = () => {
     const [url,setUrl] = useState("")
     useEffect(() => {
         const ref = doc(db,"cv-form","uqd4H1FV9bfJFBOeGune")
