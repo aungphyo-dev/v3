@@ -4,22 +4,8 @@ import {BiSolidRightArrow, BiLogoGithub, BiLogoInstagram} from 'react-icons/bi'
 import {FaFacebookSquare} from "react-icons/fa";
 import Navbar from "../Navbar/Navbar.jsx";
 import {Link} from "react-router-dom";
-import {useEffect, useState} from "react";
-import {doc, getDoc} from "firebase/firestore";
-import {db} from "../../Firebase/index.js";
+
 const Hero = () => {
-    const [url,setUrl] = useState("")
-    useEffect(() => {
-        const ref = doc(db,"cv-form","uqd4H1FV9bfJFBOeGune")
-        getDoc(ref).then(doc=>{
-            if (doc.exists()){
-                const {image} = doc.data()
-                setUrl(image)
-            }else {
-                console.log("not found")
-            }
-        })
-    }, []);
     return (
         <section className='hero-session pt-[15px] lg:pt-[35px]'  id="home">
                         <div className="hero-pt-1">
@@ -45,15 +31,6 @@ const Hero = () => {
                                 <p className='hero-pt-1-paragraph'>
                                     Experienced junior web developer ready for collaborative projects. Let's build greatness!🚀
                                 </p>
-                            </div>
-                            <div
-                                className='mb-5'>
-                                <div className='hero-pt-1-btn-container'>
-                                    <a href={url} download className='hero-pt-1-btn  peer'>
-                                        Download Cv
-                                    </a>
-                                    <BiSolidRightArrow className='hero-pt-1-icons'/>
-                                </div>
                             </div>
                             <Navbar/>
                             <div>

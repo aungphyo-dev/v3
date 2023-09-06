@@ -7,10 +7,9 @@
 *{
     font-family: 'Poppins', sans-serif;
 }
-#root{
-    cursor: url("./assets/icons8-circle-30.png"),pointer;
-}
-
+/*#root{*/
+/*    cursor: url("./assets/icons8-circle-30.png"),pointer;*/
+/*}*/
 .active .nav-indicator{
     width: 4rem;
     background: rgb(226,232,240);
