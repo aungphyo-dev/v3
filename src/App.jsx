@@ -4,14 +4,12 @@ import Project from "./layouts/Project/Project.jsx";
 import Experience from "./layouts/Experience/Experience.jsx";
 import Contact from "./layouts/Contact/Contact.jsx";
 import useFiresotre from "./Hooks/useFiresotre.js";
-import Loading from "./layouts/Loading/Loading.jsx";
 import {useEffect, useState} from "react";
 
 
 const App = () => {
     const [mousePos, setMousePos] = useState({});
     const {getCollectionByLimit,getAllCollection} = useFiresotre()
-    const [loading,setLoading] = useState(true)
     useEffect(() => {
         const handleMouseMove = (event) => {
             setMousePos({ x: event.clientX, y: event.clientY });
@@ -28,14 +26,6 @@ const App = () => {
     let projects = getCollectionByLimit('projects',4)
     const data = getAllCollection('about',"asc")
     const experience = getAllCollection('experience')
-    useEffect(() => {
-        setTimeout(()=>{
-            setLoading(false)
-        },3500)
-    }, [projects,data,experience]);
-    if (loading && projects && data && experience){
-        return <Loading/>
-    }else {
         return(
             <main className='relative w-full'>
                 <div className='pointer-events-none fixed inset-0 z-30' style={{background:`radial-gradient(600px at ${mousePos.x}px ${mousePos.y}px, rgba(29, 78, 216, 0.15), transparent 80%)`}}>
@@ -56,5 +46,5 @@ const App = () => {
                 </div>
             </main>
         )}
-}
+
 export default App

@@ -12,7 +12,7 @@
     @apply text-blue-600  font-semibold text-4xl mb-5 font-aceme
 }
 .about-ct-2-para{
-    @apply text-[16px] leading-[26px]  mb-5 text-[#CEE6F3]
+    @apply text-[16px] leading-[26px]  mb-5 text-[#8892b0]
 }
 .experience-card{
     @apply z-10 flex items-center justify-center w-9 h-9 md:w-6 md:h-6 rounded-full ring-0 ring-white  sm:ring-8  shrink-0

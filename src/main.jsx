@@ -11,9 +11,6 @@ import Login from "./layouts/Login/Login.jsx";
 import DGurd from "./layouts/Guard/DGurd.jsx";
 import Projects from "./layouts/Project/Projects.jsx";
 import DProjectFormEdit from "./layouts/Dashboard/DProjectFormEdit.jsx";
-import DAbout from "./layouts/Dashboard/DAbout.jsx";
-import DAboutForm from "./layouts/Dashboard/DAboutForm.jsx";
-import DAboutFormEdit from "./layouts/Dashboard/DAboutFormEdit.jsx";
 import DExperience from "./layouts/Dashboard/DExperience.jsx";
 import DExperienceForm from "./layouts/Dashboard/DExperienceForm.jsx";
 import DExperienceFormEdit from "./layouts/Dashboard/DExperienceFormEdit.jsx";
@@ -29,10 +26,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
                     <Route path='project/all' element={<DProjects/>}/>
                     <Route path='project/create' element={<DProjectForm/>}/>
                     <Route path='project/edit/:id' element={<DProjectFormEdit/>}/>
-                    <Route path='about/all' element={<DAbout/>}/>
-                    <Route path='about/create' element={<DAboutForm/>}/>
                     <Route path="cv/update" element={<DCVForm/>}/>
-                    <Route path='about/edit/:id' element={<DAboutFormEdit/>}/>
                     <Route path='experience/all' element={<DExperience/>}/>
                     <Route path='experience/create' element={<DExperienceForm/>}/>
                     <Route path='experience/edit/:id' element={<DExperienceFormEdit/>}/>

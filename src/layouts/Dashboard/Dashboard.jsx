@@ -17,7 +17,6 @@ import {ImSwitch} from "react-icons/im";
 const Dashboard = () => {
     const [side,setSide] = useState(false)
     const [dp1,setDp1] = useState(true)
-    const [dp2,setDp2] = useState(true)
     const [dp3,setDp3] = useState(true)
     const {logout} = useLogout()
     const nav = useNavigate()
@@ -71,31 +70,6 @@ const Dashboard = () => {
                                             <NavLink to='/dash-board/cv/update' className="flex items-center w-full p-2 transition duration-75 rounded-lg group text-white hover:bg-gray-700">
                                                 <BsPencilSquare className='text-slate-200'/>
                                                 {side && <span className="ml-3">Update CV</span>}
-                                            </NavLink>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <button onClick={()=>setDp2(!dp2)} type="button" className="flex justify-between items-center w-full p-2  transition duration-75 rounded-lg group  text-white hover:bg-gray-700">
-                                        <div className='flex justify-center items-center'>
-                                            <BsFillInfoSquareFill className={`${side?"":"mr-1"} text-slate-200`}/>
-                                            {side && <span className="ml-3">About me</span>}
-                                        </div>
-                                        <svg className="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                                            <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 1 4 4 4-4"/>
-                                        </svg>
-                                    </button>
-                                    <ul className={`${dp2?"hidden":"block"} py-2 space-y-2`}>
-                                        <li>
-                                            <NavLink to='/dash-board/about/all' className="flex items-center w-full p-2 transition duration-75 rounded-lg group text-white hover:bg-gray-700">
-                                                <BsFillPersonFill className='text-slate-200'/>
-                                                {side && <span className="ml-3">About</span>}
-                                            </NavLink>
-                                        </li>
-                                        <li>
-                                            <NavLink to='/dash-board/about/create' className="flex items-center w-full p-2 transition duration-75 rounded-lg group text-white hover:bg-gray-700">
-                                                <BsPersonFillAdd className='text-slate-200'/>
-                                                {side && <span className="ml-3">Create About</span>}
                                             </NavLink>
                                         </li>
                                     </ul>
