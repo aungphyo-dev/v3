@@ -2,7 +2,6 @@ import useFiresotre from "../../Hooks/useFiresotre.js";
 import AllProjectCard from "../../components/Project_Card/AllProjectCard.jsx";
 import {Link} from "react-router-dom";
 import {useEffect, useState} from "react";
-import Loading from "../Loading/Loading.jsx";
 const Projects = () => {
     const [mousePos, setMousePos] = useState({});
     useEffect(() => {
@@ -20,15 +19,6 @@ const Projects = () => {
     }, []);
     const {getAllCollection} = useFiresotre()
     const data = getAllCollection('projects')
-    const [loading,setLoading] = useState(true)
-    useEffect(() => {
-        setTimeout(()=>{
-            setLoading(false)
-        },1500)
-    }, [data]);
-    if (loading && !!data){
-        return <Loading/>
-    }else{
         return(
             <div className='pt-[20px] min-h-screen w-full p-5 relative'>
                 <div className='pointer-events-none fixed inset-0 z-30' style={{background:`radial-gradient(600px at ${mousePos.x}px ${mousePos.y}px, rgba(29, 78, 216, 0.15), transparent 80%)`}}></div>
@@ -43,6 +33,4 @@ const Projects = () => {
             </div>
         )
     }
-
-}
 export default Projects
