@@ -5,14 +5,32 @@ import Experience from "./layouts/Experience/Experience.jsx";
 import Contact from "./layouts/Contact/Contact.jsx";
 import useFiresotre from "./Hooks/useFiresotre.js";
 import {useEffect, useState} from "react";
+import anime from "animejs";
 
 
 const App = () => {
-    const [mousePos, setMousePos] = useState({});
     const {getCollectionByLimit,getAllCollection} = useFiresotre()
     useEffect(() => {
+        const effect = document.getElementById("bg-effect");
+        const cursor = document.getElementById("cursor");
         const handleMouseMove = (event) => {
-            setMousePos({ x: event.clientX, y: event.clientY });
+            anime({
+                targets: effect,
+                direction: 'linear',
+                easing: 'linear',
+                duration:0,
+                delay:0,
+                background: `radial-gradient(600px at ${event.clientX}px ${event.clientY}px, rgba(29, 78, 216, 0.15), transparent 80%)`,
+            });
+            anime({
+                targets:cursor,
+                translateX:event.clientX,
+                translateY:event.clientY,
+                duration: 1000,
+                delay:0,
+                direction: 'linear',
+                easing: 'easeOutElastic(1, .8)',
+            })
         };
 
         window.addEventListener('mousemove', handleMouseMove);
@@ -23,12 +41,14 @@ const App = () => {
             );
         };
     }, []);
+    console.log("hi")
     let projects = getCollectionByLimit('projects',4)
     const data = getAllCollection('about',"asc")
     const experience = getAllCollection('experience')
         return(
             <main className='relative w-full'>
-                <div className='pointer-events-none fixed inset-0 z-30' style={{background:`radial-gradient(600px at ${mousePos.x}px ${mousePos.y}px, rgba(29, 78, 216, 0.15), transparent 80%)`}}>
+                <div className='pointer-events-none fixed inset-0 z-30' id={"bg-effect"}>
+                    <div className='border-blue-500 border-2 w-4 h-4 rounded-full' id={"cursor"}></div>
                 </div>
                 <div className='w-full min-h-screen' >
                     <div className="progress fixed top-0 right-0 left-0 z-[2000]"></div>
