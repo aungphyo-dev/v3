@@ -41,7 +41,6 @@ const App = () => {
             );
         };
     }, []);
-    console.log("hi")
     let projects = getCollectionByLimit('projects',4)
     const data = getAllCollection('about',"asc")
     const experience = getAllCollection('experience')
