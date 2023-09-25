@@ -4,7 +4,7 @@ import Project from "./layouts/Project/Project.jsx";
 import Experience from "./layouts/Experience/Experience.jsx";
 import Contact from "./layouts/Contact/Contact.jsx";
 import useFiresotre from "./Hooks/useFiresotre.js";
-import {useEffect, useState} from "react";
+import {useEffect} from "react";
 import anime from "animejs";
 
 
@@ -46,8 +46,8 @@ const App = () => {
     const experience = getAllCollection('experience')
         return(
             <main className='relative w-full'>
-                <div className='pointer-events-none fixed inset-0 z-30' id={"bg-effect"}>
-                    <div className='border-blue-500 border-2 w-4 h-4 rounded-full' id={"cursor"}></div>
+                <div className='pointer-events-none fixed inset-0 z-30 flex justify-center items-center' id={"bg-effect"}>
+                    <div className='border-blue-500 border-2 w-4 h-4 rounded-full hidden md:block' id={"cursor"}></div>
                 </div>
                 <div className='w-full min-h-screen' >
                     <div className="progress fixed top-0 right-0 left-0 z-[2000]"></div>
