@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import {doc, getDoc, serverTimestamp} from 'firebase/firestore'
+import {serverTimestamp} from 'firebase/firestore'
 import useFiresotre from "../../Hooks/useFiresotre.js";
 import {BsPlusSquareFill} from "react-icons/bs";
 import {GrFormClose} from "react-icons/gr";
@@ -24,7 +24,6 @@ const DProjectForm = () => {
     },[file])
     const [title,setTitle] = useState("");
     const [demo,setDemo] = useState("");
-    const [github,setGithub] = useState("");
     const [description,setDescription] = useState("");
     const [skill,setSkill] = useState('')
     const [skills,setSkills] = useState([])
@@ -36,7 +35,6 @@ const DProjectForm = () => {
             title:title,
             description:description,
             demo:demo,
-            github:github,
             skills:skills,
             created_at:serverTimestamp()
         }
@@ -44,7 +42,6 @@ const DProjectForm = () => {
             if (res){
                 setTitle('')
                 setDemo('')
-                setGithub('')
                 setDescription('')
                 setUrl('')
                 setSkills([])
@@ -80,10 +77,6 @@ const DProjectForm = () => {
               <input type="text"  value={demo} onChange={(e)=>setDemo(e.target.value)} name="project_demo" id="project_demo" className="block py-2.5 px-0 w-full text-sm  bg-transparent border-0 border-b-2  appearance-none text-white border-gray-600  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
               <label htmlFor="project_demo" className="peer-focus:font-medium absolute text-sm  text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0  peer-focus:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Project Demo</label>
           </div>
-              <div className="relative z-0 w-full mb-6 group">
-                  <input type="text"  value={github} onChange={(e)=>setGithub(e.target.value)} name="project_github" id="project_github" className="block py-2.5 px-0 w-full text-sm  bg-transparent border-0 border-b-2  appearance-none text-white border-gray-600  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
-                  <label htmlFor="project_github" className="peer-focus:font-medium absolute text-sm  text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0  peer-focus:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Project Github</label>
-              </div>
           <div className="relative z-0 w-full mb-6 group">
               <textarea rows={7}  value={description} onChange={(e)=>setDescription(e.target.value)} name="description" id="description" className="block py-2.5 px-0 w-full text-sm  bg-transparent border-0 border-b-2  appearance-none text-white border-gray-600  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required></textarea>
               <label htmlFor="description" className="peer-focus:font-medium absolute text-sm  text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0  peer-focus:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Project Description</label>
