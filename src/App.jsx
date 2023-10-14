@@ -6,8 +6,7 @@ import Contact from "./layouts/Contact/Contact.jsx";
 import useFiresotre from "./Hooks/useFiresotre.js";
 import {useEffect} from "react";
 import anime from "animejs";
-
-
+//v3 code
 const App = () => {
     const {getCollectionByLimit,getAllCollection} = useFiresotre()
     useEffect(() => {
